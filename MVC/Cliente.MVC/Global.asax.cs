@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Autofac.Integration.Mvc;
+using Cliente.Autofac.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -16,6 +19,8 @@ namespace Cliente.MVC
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(IoCConfiguration.Build(Assembly.GetExecutingAssembly(), new ViewRegistrationSource())));
+            
         }
     }
 }

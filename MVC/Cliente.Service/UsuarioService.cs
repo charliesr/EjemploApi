@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Formatting;
-using System.Text;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Cliente.Service
 {
-    class UsuarioService : IUsuarioService
+    public class UsuarioService : IUsuarioService
     {
         private readonly HttpClient _cliente;
 

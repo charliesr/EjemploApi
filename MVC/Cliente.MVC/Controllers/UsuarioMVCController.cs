@@ -1,7 +1,9 @@
-﻿using Cliente.Service;
+﻿using Cliente.MVC.Models;
+using Cliente.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -23,10 +25,10 @@ namespace Cliente.MVC.Controllers
         }
 
         // GET: UsuarioMVC/Details/5
-        public ActionResult Details()
+        public async Task<ActionResult> Details()
         {
             
-            return View(this._usuarioService.GetAsync());
+            return View(new UsuarioMVC(await this._usuarioService.GetAsync()));
         }
 
         // GET: UsuarioMVC/Create
@@ -37,11 +39,11 @@ namespace Cliente.MVC.Controllers
 
         // POST: UsuarioMVC/Create
         [HttpPost]
-        public ActionResult Create(UsuarioServiceModel usuarioServiceModel)
+        public async Task<ActionResult> Create(UsuarioServiceModel usuarioServiceModel)
         {
             try
             {
-                var usuario = this._usuarioService.SetAsync(usuarioServiceModel);
+                await this._usuarioService.SetAsync(usuarioServiceModel);
 
                 return RedirectToAction("Details");
             }
