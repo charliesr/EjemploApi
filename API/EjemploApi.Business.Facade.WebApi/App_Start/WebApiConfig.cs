@@ -1,8 +1,4 @@
 ﻿using EjemploApi.Business.Facade.WebApi.Controllers;
-using EjemploApi.Business.Logic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Dispatcher;
 

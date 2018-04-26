@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessException.cs" />
     <Compile Include="IUsuarioBlAsync.cs" />
     <Compile Include="UsuarioBlAsync.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

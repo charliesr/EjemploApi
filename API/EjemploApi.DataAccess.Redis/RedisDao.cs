@@ -18,13 +18,29 @@ namespace EjemploApi.DataAccess.Redis
         }
         public async Task<T> AddAsync(T entity, string key)
         {
-            await this._redis.StringSetAsync(key, JsonConvert.SerializeObject(entity));
-            return await this.GetAsync(key);
+            try
+            {
+                await this._redis.StringSetAsync(key, JsonConvert.SerializeObject(entity));
+                return await this.GetAsync(key);
+            }
+            catch (Exception ex)
+            {
+                throw new DaoException(ex.Message,ex);
+            }
+
         }
 
         public async Task<T> GetAsync(string key)
         {
-            return JsonConvert.DeserializeObject<T>(await this._redis.StringGetAsync(key));
+            try
+            {
+                return JsonConvert.DeserializeObject<T>(await this._redis.StringGetAsync(key));
+
+            }
+            catch (Exception ex)
+            {
+                throw new DaoException(ex.Message, ex);
+            }
         }
     }
 }

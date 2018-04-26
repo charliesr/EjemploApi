@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DaoException.cs" />
     <Compile Include="IGet.cs" />
     <Compile Include="ISet.cs" />
     <Compile Include="RedisConfiguration.cs" />

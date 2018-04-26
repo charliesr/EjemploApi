@@ -20,12 +20,27 @@ namespace EjemploApi.Business.Logic
         }
         public Task<Usuario> GetAsync()
         {
-            return _getAsync.GetAsync("Pepe");
+            try
+            {
+                return _getAsync.GetAsync("Pepe");
+
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException(ex.Message, ex);
+            }
         }
 
         public Task<Usuario> SetAsync(Usuario usuario)
         {
-            return _setAsync.AddAsync(usuario, "Pepe");
+            try
+            {
+                return _setAsync.AddAsync(usuario, "Pepe");
+            }
+            catch (Exception ex)
+            {
+                throw new BusinessException(ex.Message, ex);
+            }
 
         }
     }
